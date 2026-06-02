@@ -17,6 +17,8 @@ public class PostUpdateEventHandler implements ApplicationListener<PostUpdateEve
     @Autowired
     private FavoriteService favoriteService;
     @Autowired
+    private PostLikeService postLikeService;
+    @Autowired
     private CommentService commentService;
     @Autowired
     private TagService tagService;
@@ -37,6 +39,7 @@ public class PostUpdateEventHandler implements ApplicationListener<PostUpdateEve
             case PostUpdateEvent.ACTION_DELETE:
                 userEventService.identityPost(event.getUserId(), false);
                 favoriteService.deleteByPostId(event.getPostId());
+                postLikeService.deleteByPostId(event.getPostId());
                 commentService.deleteByPostId(event.getPostId());
                 tagService.deteleMappingByPostId(event.getPostId());
                 messageService.deleteByPostId(event.getPostId());

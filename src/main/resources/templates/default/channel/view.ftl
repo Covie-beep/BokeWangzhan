@@ -41,6 +41,18 @@
                             </span>
                         </#list>
                     </div>
+                    <div class="panel-footer text-center post-actions">
+                        <a class="btn btn-default btn-sm" href="#" data-id="${view.id}" rel="like" role="button">
+                            <i class="icon icon-heart"></i>
+                            <#if liked!false>已赞<#else>点赞</#if>
+                            <strong class="post-like-count">${view.likes!0}</strong>
+                        </a>
+                        <a class="btn btn-default btn-sm" href="#" data-id="${view.id}" rel="favor" role="button">
+                            <i class="icon icon-star"></i>
+                            <#if favored!false>已收藏<#else>收藏</#if>
+                            <strong class="post-favor-count">${view.favors!0}</strong>
+                        </a>
+                    </div>
                     <div class="panel-footer">
                         <div class="hidden-xs">
                             <div class="social-share" data-sites="qq, weibo, wechat, qzone, facebook, twitter, google"></div>
@@ -100,13 +112,6 @@
                                 <li><strong>${view.author.posts}</strong><span>发布</span></li>
                                 <li class="noborder"><strong>${view.author.comments}</strong><span>评论</span></li>
                             </ul>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="text-center">
-                            <a class="btn btn-default btn-sm" href="javascript:void(0);" data-id="${view.id}" rel="favor">
-                                <i class="icon icon-star"></i> 收藏 <strong id="favors">${view.favors}</strong>
-                            </a>
                         </div>
                     </li>
                 </ul>

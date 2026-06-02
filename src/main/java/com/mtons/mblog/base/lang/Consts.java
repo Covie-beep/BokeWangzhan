@@ -68,6 +68,7 @@ public interface Consts {
 		String NEWEST = "newest";
 		String HOTTEST = "hottest";
 		String FAVOR = "favors";
+		String LIKES = "likes";
 	}
 
 	int CODE_BIND = 1;   // bind email
@@ -91,6 +92,8 @@ public interface Consts {
 	int READED = 1;
 
 	int MESSAGE_EVENT_FAVOR_POST = 1; // 有人喜欢了你的文章
+
+	int MESSAGE_EVENT_LIKE_POST = 2; // 有人点赞了你的文章
 
 	int MESSAGE_EVENT_COMMENT = 3; // 有人评论了你
 

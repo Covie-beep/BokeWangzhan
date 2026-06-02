@@ -13,6 +13,7 @@ import com.mtons.mblog.base.lang.Consts;
 import com.mtons.mblog.base.utils.*;
 import com.mtons.mblog.modules.aspect.PostStatusFilter;
 import com.mtons.mblog.modules.data.PostVO;
+import com.mtons.mblog.modules.data.ArchiveVO;
 import com.mtons.mblog.modules.data.UserVO;
 import com.mtons.mblog.modules.entity.*;
 import com.mtons.mblog.modules.event.PostUpdateEvent;
@@ -54,6 +55,8 @@ public class PostServiceImpl implements PostService {
 	private UserService userService;
 	@Autowired
 	private FavoriteService favoriteService;
+	@Autowired
+	private PostLikeService postLikeService;
 	@Autowired
 	private ChannelService channelService;
 	@Autowired
@@ -344,10 +347,78 @@ public class PostServiceImpl implements PostService {
 	}
 
 	@Override
-	@Transactional(rollbackFor = Throwable.class)
+    @Transactional(rollbackFor = Throwable.class)
 	public void unfavor(long userId, long postId) {
 		postRepository.updateFavors(postId,  Consts.DECREASE_STEP);
 		favoriteService.delete(userId, postId);
+	}
+
+	@Override
+	@Transactional(rollbackFor = Throwable.class)
+	public void like(long userId, long postId) {
+		postLikeService.like(userId, postId);
+		postRepository.updateLikes(postId, Consts.IDENTITY_STEP);
+	}
+
+	@Override
+	@Transactional(rollbackFor = Throwable.class)
+	public void unlike(long userId, long postId) {
+		postLikeService.unlike(userId, postId);
+		postRepository.updateLikes(postId, Consts.DECREASE_STEP);
+	}
+
+	@Override
+	@PostStatusFilter
+	public Page<PostVO> pagingByTag(Pageable pageable, String tagName) {
+		Page<Post> page = postRepository.findAll((root, query, builder) -> {
+			Predicate predicate = builder.conjunction();
+			if (StringUtils.isNotBlank(tagName)) {
+				predicate.getExpressions().add(
+						builder.like(root.get("tags").as(String.class), "%" + tagName + "%"));
+			}
+			return predicate;
+		}, pageable);
+		return new PageImpl<>(toPosts(page.getContent()), pageable, page.getTotalElements());
+	}
+
+	@Override
+	@PostStatusFilter
+	public Page<PostVO> pagingByArchive(Pageable pageable, int year, int month) {
+		Calendar startCal = Calendar.getInstance();
+		startCal.set(year, month - 1, 1, 0, 0, 0);
+		startCal.set(Calendar.MILLISECOND, 0);
+		Date start = startCal.getTime();
+
+		Calendar endCal = Calendar.getInstance();
+		endCal.set(year, month - 1, 1, 0, 0, 0);
+		endCal.set(Calendar.MILLISECOND, 0);
+		endCal.add(Calendar.MONTH, 1);
+		Date end = endCal.getTime();
+
+		Page<Post> page = postRepository.findAll((root, query, builder) -> {
+			Predicate predicate = builder.conjunction();
+			predicate.getExpressions().add(builder.greaterThanOrEqualTo(root.get("created"), start));
+			predicate.getExpressions().add(builder.lessThan(root.get("created"), end));
+			return predicate;
+		}, pageable);
+		return new PageImpl<>(toPosts(page.getContent()), pageable, page.getTotalElements());
+	}
+
+	@Override
+	@PostStatusFilter
+	public List<ArchiveVO> findArchives() {
+		List<Object[]> rows = postRepository.findArchiveStats();
+		List<ArchiveVO> archives = new ArrayList<>();
+		if (rows == null) {
+			return archives;
+		}
+		for (Object[] row : rows) {
+			int year = ((Number) row[0]).intValue();
+			int month = ((Number) row[1]).intValue();
+			long count = ((Number) row[2]).longValue();
+			archives.add(new ArchiveVO(year, month, count));
+		}
+		return archives;
 	}
 
 	@Override

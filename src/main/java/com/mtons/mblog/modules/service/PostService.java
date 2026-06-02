@@ -11,6 +11,7 @@ package com.mtons.mblog.modules.service;
 
 import com.mtons.mblog.base.lang.Consts;
 import com.mtons.mblog.modules.data.PostVO;
+import com.mtons.mblog.modules.data.ArchiveVO;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -154,6 +155,36 @@ public interface PostService {
 	 */
 	@CacheEvict(key = "'view_' + #postId")
 	void unfavor(long userId, long postId);
+
+	/**
+	 * 点赞文章
+	 */
+	@CacheEvict(key = "'view_' + #postId")
+	void like(long userId, long postId);
+
+	/**
+	 * 取消点赞
+	 */
+	@CacheEvict(key = "'view_' + #postId")
+	void unlike(long userId, long postId);
+
+	/**
+	 * 按标签分页
+	 */
+	@Cacheable
+	Page<PostVO> pagingByTag(Pageable pageable, String tagName);
+
+	/**
+	 * 按年月归档分页
+	 */
+	@Cacheable
+	Page<PostVO> pagingByArchive(Pageable pageable, int year, int month);
+
+	/**
+	 * 归档统计
+	 */
+	@Cacheable(key = "'archives'")
+	List<ArchiveVO> findArchives();
 
 	long count();
 }

@@ -37,6 +37,7 @@ public class MessageEventHandler implements ApplicationListener<MessageEvent> {
         PostVO p;
         switch (event.getEvent()) {
             case Consts.MESSAGE_EVENT_FAVOR_POST:
+            case Consts.MESSAGE_EVENT_LIKE_POST:
                 p = postService.get(event.getPostId());
                 Assert.notNull(p, "文章不存在");
                 nt.setUserId(p.getAuthorId());

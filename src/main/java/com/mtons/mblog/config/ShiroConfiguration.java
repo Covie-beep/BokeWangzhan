@@ -73,6 +73,7 @@ public class ShiroConfiguration {
         hashMap.put("/dist/**", "anon");
         hashMap.put("/theme/**", "anon");
         hashMap.put("/storage/**", "anon");
+        hashMap.put("/api/**", "anon");
         hashMap.put("/login", "anon");
         hashMap.put("/user/**", "authc");
         hashMap.put("/settings/**", "authc");

@@ -83,4 +83,9 @@ public class FavoriteServiceImpl implements FavoriteService {
         log.info("favoriteRepository delete {}", rows);
     }
 
+    @Override
+    public boolean isFavorited(long userId, long postId) {
+        return favoriteRepository.findByUserIdAndPostId(userId, postId) != null;
+    }
+
 }

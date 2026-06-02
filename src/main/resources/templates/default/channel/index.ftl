@@ -13,7 +13,10 @@
                                 <a href="?order=newest" <#if order == 'newest'> class="active" </#if>>最近</a>
                             </li>
                             <li data-toggle="tooltip" title="点赞数排序">
-                                <a href="?order=favors" <#if order == 'favors'> class="active" </#if>>投票</a>
+                                <a href="?order=likes" <#if order == 'likes'> class="active" </#if>>点赞</a>
+                            </li>
+                            <li data-toggle="tooltip" title="收藏数排序">
+                                <a href="?order=favors" <#if order == 'favors'> class="active" </#if>>收藏</a>
                             </li>
                             <li data-toggle="tooltip" title="评论次数排序">
                                 <a href="?order=hottest" <#if order == 'hottest'> class="active" </#if>>热门</a>

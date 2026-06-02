@@ -6,6 +6,15 @@
     <@layout.put block="contents">
         <div class="row">
             <div class="col-xs-12 col-md-9 side-left">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <ul class="list-inline topic-filter">
+                            <li><a href="?order=newest" <#if order! == 'newest'>class="active"</#if>>最新</a></li>
+                            <li><a href="?order=likes" <#if order! == 'likes'>class="active"</#if>>最多赞</a></li>
+                            <li><a href="?order=hottest" <#if order! == 'hottest'>class="active"</#if>>热门</a></li>
+                        </ul>
+                    </div>
+                </div>
                 <@contents channelId=channel.id pageNo=pageNo order=order>
                     <div class="posts">
                         <ul class="posts-list">

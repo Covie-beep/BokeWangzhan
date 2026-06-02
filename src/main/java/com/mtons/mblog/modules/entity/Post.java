@@ -96,6 +96,11 @@ public class Post implements Serializable {
 	private int favors;
 
 	/**
+	 * 点赞数
+	 */
+	private int likes;
+
+	/**
 	 * 评论数
 	 */
 	private int comments;
@@ -198,6 +203,14 @@ public class Post implements Serializable {
 
 	public void setFavors(int favors) {
 		this.favors = favors;
+	}
+
+	public int getLikes() {
+		return likes;
+	}
+
+	public void setLikes(int likes) {
+		this.likes = likes;
 	}
 
 	public int getComments() {

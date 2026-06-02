@@ -9,6 +9,7 @@
 */
 package com.mtons.mblog.web.controller;
 
+import com.mtons.mblog.base.lang.Consts;
 import com.mtons.mblog.base.lang.Result;
 import com.mtons.mblog.base.storage.StorageFactory;
 import com.mtons.mblog.base.utils.MD5;
@@ -90,6 +91,34 @@ public class BaseController {
         int pageSize = ServletRequestUtils.getIntParameter(request, "pageSize", 10);
         int pageNo = ServletRequestUtils.getIntParameter(request, "pageNo", 1);
 
+        if (null == sort) {
+            sort = Sort.unsorted();
+        }
+        return PageRequest.of(pageNo - 1, pageSize, sort);
+    }
+
+    protected PageRequest wrapPageable(int pageNo, int pageSize, Sort sort) {
+        if (pageNo <= 0) {
+            pageNo = 1;
+        }
+        if (pageSize <= 0) {
+            pageSize = Consts.PAGE_DEFAULT_SIZE;
+        }
+        if (sort == null) {
+            sort = Sort.unsorted();
+        }
+        return PageRequest.of(pageNo - 1, pageSize, sort);
+    }
+
+    protected PageRequest wrapApiPageable() {
+        return wrapApiPageable(null);
+    }
+
+    protected PageRequest wrapApiPageable(Sort sort) {
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        int pageSize = ServletRequestUtils.getIntParameter(request, "pageSize", Consts.PAGE_DEFAULT_SIZE);
+        int pageNo = ServletRequestUtils.getIntParameter(request, "pageNum",
+                ServletRequestUtils.getIntParameter(request, "pageNo", 1));
         if (null == sort) {
             sort = Sort.unsorted();
         }

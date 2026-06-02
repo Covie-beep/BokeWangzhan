@@ -22,7 +22,8 @@
                         <li class="ico-cat"><@utils.showChannel row/></li>
                         <li class="ico-time"><i class="icon-clock"></i>${timeAgo(row.created)}</li>
                         <li class="ico-eye hidden-xs"><i class="icon-book-open"></i>${row.views}</li>
-                        <li class="ico-like hidden-xs"><i class="icon-bubble"></i>${row.comments}</li>
+                        <li class="ico-like hidden-xs"><i class="icon-heart"></i>${row.likes!0}</li>
+                        <li class="ico-comment hidden-xs"><i class="icon-bubble"></i>${row.comments}</li>
                     </ul>
                 </div>
             </div>
@@ -45,7 +46,8 @@
                         <li class="ico-cat"><@utils.showChannel row/></li>
                         <li class="ico-time"><i class="icon-clock"></i>${timeAgo(row.created)}</li>
                         <li class="ico-eye hidden-xs"><i class="icon-book-open"></i>${row.views}</li>
-                        <li class="ico-like hidden-xs"><i class="icon-bubble"></i>${row.comments}</li>
+                        <li class="ico-like hidden-xs"><i class="icon-heart"></i>${row.likes!0}</li>
+                        <li class="ico-comment hidden-xs"><i class="icon-bubble"></i>${row.comments}</li>
                     </ul>
                 </div>
             </div>
