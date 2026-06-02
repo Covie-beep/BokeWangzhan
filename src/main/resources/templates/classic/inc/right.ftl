@@ -43,3 +43,19 @@
     </div>
 </div>
 </@controls>
+
+<div class="panel panel-default widget">
+	<div class="panel-heading">
+		<h3 class="panel-title"><i class="fa fa-archive"></i> 文章归档</h3>
+	</div>
+	<div class="panel-body">
+		<@archives size=6>
+		<ul class="list">
+			<#list results as row>
+				<li><a href="${base}/archive/${row.year}/${row.month}">${row.year}年${row.month}月 (${row.count})</a></li>
+			</#list>
+		</ul>
+		</@archives>
+		<p class="text-center"><a href="${base}/archive">查看全部归档</a></p>
+	</div>
+</div>

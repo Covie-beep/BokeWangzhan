@@ -47,9 +47,11 @@ define(function(require, exports, module) {
     
 	// 绑定按钮事件
 	var bindClickEvent = function () {
-		// Favor
-		$('a[rel=favor]').click(function () {
-			var id = $(this).attr('data-id');
+		// Like
+		$(document).on('click', 'a[rel=like]', function (e) {
+			e.preventDefault();
+			var $btn = $(this);
+			var id = $btn.attr('data-id');
 
 			if (!Authc.isAuthced()) {
 				Authc.showLogin();
@@ -57,15 +59,54 @@ define(function(require, exports, module) {
 			}
 
 			if (parseInt(id) > 0) {
-				jQuery.getJSON(_MTONS.BASE_PATH +'/user/favor', {'id': id}, function (ret) {
-					if (ret.code >=0) {
-						var favors = $('#favors').text();
-						$('#favors').text(parseInt(favors) + 1);
+				var liked = $btn.text().indexOf('已赞') >= 0;
+				var url = liked ? '/user/unlike' : '/user/like';
+				jQuery.getJSON(_MTONS.BASE_PATH + url, {'id': id}, function (ret) {
+					if (ret.code >= 0 && ret.data) {
+						if (ret.data.liked) {
+							$btn.html('<i class="icon icon-heart"></i> 已赞 <strong class="post-like-count">' + ret.data.likes + '</strong>');
+						} else {
+							$btn.html('<i class="icon icon-heart"></i> 点赞 <strong class="post-like-count">' + ret.data.likes + '</strong>');
+						}
 					} else {
-						layer.msg(ret.message, {icon: 5});
+						layer.msg(ret.message || '操作失败', {icon: 5});
 					}
+				}).fail(function () {
+					layer.msg('请求失败，请确认已登录后重试', {icon: 5});
 				});
 			}
+			return false;
+		});
+
+		// Favor
+		$(document).on('click', 'a[rel=favor]', function (e) {
+			e.preventDefault();
+			var $btn = $(this);
+			var id = $btn.attr('data-id');
+
+			if (!Authc.isAuthced()) {
+				Authc.showLogin();
+				return false;
+			}
+
+			if (parseInt(id) > 0) {
+				var favored = $btn.text().indexOf('已收藏') >= 0;
+				var url = favored ? '/user/unfavor' : '/user/favor';
+				jQuery.getJSON(_MTONS.BASE_PATH + url, {'id': id}, function (ret) {
+					if (ret.code >= 0 && ret.data) {
+						if (ret.data.favored) {
+							$btn.html('<i class="icon icon-star"></i> 已收藏 <strong class="post-favor-count">' + ret.data.favors + '</strong>');
+						} else {
+							$btn.html('<i class="icon icon-star"></i> 收藏 <strong class="post-favor-count">' + ret.data.favors + '</strong>');
+						}
+					} else {
+						layer.msg(ret.message || '操作失败', {icon: 5});
+					}
+				}).fail(function () {
+					layer.msg('请求失败，请确认已登录后重试', {icon: 5});
+				});
+			}
+			return false;
 		});
 
 		//$(document).pjax('a[rel=pjax]', '#wrap', {

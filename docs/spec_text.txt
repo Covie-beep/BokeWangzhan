@@ -1,0 +1,773 @@
+﻿     
+椤圭洰鍚嶇О锛氳交閲忕骇涓汉鍗氬灏忕珯
+               寮€璇炬椂闂达細 2025 锝? 2026  骞村害绗?2 瀛︽湡
+涓?   涓氾細缃戠粶宸ョ▼
+濮?   鍚嶏細寮犺寳鐑ㄣ€佹潕娉芥棴
+鐩綍
+1 寮曡█
+1
+1
+3 妯″潡浜岋細鍗氭枃鏍稿績绠＄悊妯″潡锛堜笟鍔℃牳蹇冩ā鍧楋級
+4
+4 妯″潡涓夛細鍗氬鍓嶅彴灞曠ず妯″潡锛堢敤鎴峰叆鍙ｆā鍧楋級
+7
+5 妯″潡鍥涳細鐢ㄦ埛浜掑姩绀句氦妯″潡锛堜笟鍔℃墿灞曟ā鍧楋級
+8
+10
+7 妯″潡鍏細绯荤粺绠＄悊鍚庡彴妯″潡锛堣繍缁寸鎺фā鍧楋級
+12
+13
+9 闄勫綍
+14
+2
+1 寮曡█
+1.1 缂栧啓鐩殑
+Web 椤圭洰寮€鍙戣绋嬭涔変笌瀹炶返瑕佹眰
+1.3 閫氱敤瑙勮寖
+鎺ュ彛椋庢牸锛歊ESTful
+{
+&quot;code&quot;: 200,
+&quot;msg&quot;: &quot;鎿嶄綔鎴愬姛&quot;,
+&quot;data&quot;: {}
+}
+2.1 妯″潡姒傝堪
+妯″潡缂栧彿锛歁OD-01
+鏍稿績鑱岃矗锛氱粺涓€绠＄悊鍏ㄧ郴缁熻韩浠借璇併€佽鑹叉潈闄愪笌璐﹀彿瀹夊叏锛屾槸鎵€鏈変笟鍔℃ā鍧楃殑鏉冮檺鍏ュ彛
+璁捐鐩殑锛氬疄鐜板畨鍏ㄥ彲闈犵殑韬唤楠岃瘉锛岀粏绮掑害鐨勬潈闄愭帶鍒讹紝闃叉瓒婃潈璁块棶
+渚濊禆妯″潡锛氬叏灞€鍏叡鏀拺妯″潡銆丷edis 缂撳瓨鏈嶅姟
+2.2 鍔熻兘璇︾粏璁捐
+鍔熻兘鎻忚堪
+鍓嶇疆鏉′欢
+鍚庣疆鏉′欢
+鐢ㄦ埛娉ㄥ唽
+P1
+鐢ㄦ埛鐧诲綍
+P1
+璐﹀彿宸叉敞鍐屼笖鏈绂佺敤
+瀵嗙爜鎵惧洖
+P1
+璐﹀彿娉ㄩ攢
+P2
+JWT 閴存潈
+浠ょ墝鏈夋晥鎬ф牎楠屻€佽繃鏈熷埛鏂般€侀粦鍚嶅崟绠＄悊
+P1
+璇锋眰鎼哄甫 Token
+鏍￠獙閫氳繃鏀捐锛屽け璐ヨ繑鍥?401
+RBAC 鏉冮檺鎺у埗
+鎺ュ彛绾ф潈闄愭嫤鎴€佹暟鎹骇鏉冮檺鏍￠獙
+P1
+鏈夋潈闄愭斁琛岋紝鏃犳潈闄愯繑鍥?403
+鐧诲綍瀹夊叏闃叉姢
+P1
+鍏抽敭鎿嶄綔闇€杈撳叆瀵嗙爜楠岃瘉
+P1
+鐢ㄦ埛涓虹鐞嗗憳
+2.3 鎺ュ彛璁捐
+鎺ュ彛璺緞
+璇锋眰鏂规硶
+鎺ュ彛鍚嶇О
+杈撳叆鍙傛暟
+杈撳嚭
+鏉冮檺
+/api/auth/register
+POST
+鐢ㄦ埛娉ㄥ唽
+username, email, password, confirmPassword
+code, msg
+鎵€鏈変汉
+/api/auth/login
+POST
+鐢ㄦ埛鐧诲綍
+username/email, password
+code, msg, data(token, userInfo)
+鎵€鏈変汉
+/api/auth/refresh
+POST
+鍒锋柊浠ょ墝
+refreshToken
+code, msg, data(newToken)
+/api/auth/logout
+POST
+token
+code, msg
+/api/auth/reset-password
+POST
+閲嶇疆瀵嗙爜
+email, code, newPassword
+code, msg
+鎵€鏈変汉
+/api/auth/delete-account
+DELETE
+娉ㄩ攢璐﹀彿
+token, password
+code, msg
+2.4 鏁版嵁璁捐
+绫诲瀷
+闀垮害
+涓婚敭
+闈炵┖
+娉ㄩ噴
+id
+bigint
+20
+鑷
+鐢ㄦ埛 ID
+username
+varchar
+50
+email
+varchar
+100
+password
+varchar
+100
+BCrypt 鍔犲瘑瀵嗙爜
+avatar
+varchar
+255
+榛樿澶村儚
+澶村儚 URL
+signature
+varchar
+255
+status
+tinyint
+1
+1
+0-绂佺敤锛?-姝ｅ父锛?-宸叉敞閿€
+create_time
+datetime
+CURRENT_TIMESTAMP
+鍒涘缓鏃堕棿
+update_time
+datetime
+CURRENT_TIMESTAMP
+鏇存柊鏃堕棿
+2.4.3 绱㈠紩璁捐
+idx_username锛氬敮涓€绱㈠紩锛寀sername
+idx_email锛氬敮涓€绱㈠紩锛宔mail
+idx_status锛氭櫘閫氱储寮曪紝status
+2.5 瀹夊叏鏉冮檺璁捐
+鎵€鏈夊啓鎿嶄綔鏍￠獙鏁版嵁鎵€灞炵敤鎴?ID
+绠＄悊鍛樻帴鍙ｆ牎楠岃鑹诧紝鍏抽敭鎿嶄綔浜屾楠岃瘉
+2.6 寮傚父澶勭悊
+璇存槑
+鎻愮ず淇℃伅
+1001
+鐢ㄦ埛鍚嶅凡瀛樺湪
+璇ョ敤鎴峰悕宸茶娉ㄥ唽锛岃鏇存崲
+1002
+1003
+鐢ㄦ埛鍚嶆垨瀵嗙爜閿欒
+鐢ㄦ埛鍚嶆垨瀵嗙爜閿欒锛岃閲嶈瘯
+1004
+璐︽埛宸茶绂佺敤
+1005
+1006
+3 妯″潡浜岋細鍗氭枃鏍稿績绠＄悊妯″潡锛堜笟鍔℃牳蹇冩ā鍧楋級
+3.1 妯″潡姒傝堪
+妯″潡缂栧彿锛歁OD-02
+鏍稿績鑱岃矗锛氱鐞嗘枃绔犲叏鐢熷懡鍛ㄦ湡锛屾彁渚涘唴瀹瑰垱浣溿€佺紪杈戙€佸彂甯冧笌褰掓。鑳藉姏
+3.2 鍔熻兘璇︾粏璁捐
+鍔熻兘鎻忚堪
+鍓嶇疆鏉′欢
+鍚庣疆鏉′欢
+鏂囩珷鍒涗綔
+P1
+鐢熸垚鑽夌璁板綍
+鏂囩珷缂栬緫
+P1
+鏂囩珷鍙戝竷
+P1
+鏂囩珷鐘舵€佹洿鏂帮紝鏇存柊缂撳瓨
+鏂囩珷鍒犻櫎
+P1
+鍒嗙被绠＄悊
+P1
+鐢熸垚/鏇存柊/鍒犻櫎鍒嗙被
+鏍囩绠＄悊
+P1
+灏侀潰涓婁紶
+P1
+杩斿洖灏侀潰 URL
+P1
+鏂囩珷鍏紑
+3.3 鎺ュ彛璁捐
+鎺ュ彛璺緞
+璇锋眰鏂规硶
+鎺ュ彛鍚嶇О
+杈撳叆鍙傛暟
+杈撳嚭
+鏉冮檺
+/api/article/draft
+POST
+鍒涘缓鑽夌
+title, content
+code, msg, data(articleId)
+浼氬憳
+/api/article/{id}
+PUT
+缂栬緫鏂囩珷
+title, content, categoryId, tagIds, cover, status
+code, msg
+/api/article/{id}
+GET
+鑾峰彇鏂囩珷璇︽儏
+id
+code, msg, data(articleInfo)
+/api/article/{id}
+DELETE
+鍒犻櫎鏂囩珷
+id
+code, msg
+/api/category
+POST
+鍒涘缓鍒嗙被
+name, parentId, sort
+code, msg, data(categoryId)
+浼氬憳
+/api/tag
+POST
+鍒涘缓鏍囩
+name
+code, msg, data(tagId)
+浼氬憳
+/api/article/cover
+POST
+涓婁紶灏侀潰
+file
+code, msg, data(coverUrl)
+浼氬憳
+3.4 鏁版嵁璁捐
+绫诲瀷
+闀垮害
+涓婚敭
+闈炵┖
+娉ㄩ噴
+id
+bigint
+20
+鑷
+鏂囩珷 ID
+title
+varchar
+200
+鏂囩珷鏍囬
+content
+longtext
+Markdown 鍐呭
+cover
+varchar
+255
+灏侀潰 URL
+category_id
+bigint
+20
+鍒嗙被 ID
+user_id
+bigint
+20
+浣滆€?ID
+status
+tinyint
+1
+0
+view_count
+int
+11
+0
+like_count
+int
+11
+0
+create_time
+datetime
+CURRENT_TIMESTAMP
+鍒涘缓鏃堕棿
+update_time
+datetime
+CURRENT_TIMESTAMP
+鏇存柊鏃堕棿
+3.4.3 绱㈠紩璁捐
+idx_user_id锛氭櫘閫氱储寮曪紝user_id
+idx_category_id锛氭櫘閫氱储寮曪紝category_id
+idx_status_create_time锛氳仈鍚堢储寮曪紝status, create_time
+3.5 鎬ц兘璁捐
+鐑偣鏂囩珷鍒楄〃 Redis 缂撳瓨 5 鍒嗛挓锛屽啓鎿嶄綔涓诲姩鏇存柊
+娴忚閲忎娇鐢?Redis 璁℃暟锛屽畾鏃跺悓姝ユ暟鎹簱
+鍏抽敭瀛楁寤虹珛绱㈠紩
+3.6 寮傚父澶勭悊
+璇存槑
+鎻愮ず淇℃伅
+2001
+鎮ㄨ闂殑鏂囩珷涓嶅瓨鍦ㄦ垨宸茶鍒犻櫎
+2002
+鏃犳潈缂栬緫鏂囩珷
+鎮ㄦ棤鏉冪紪杈戜粬浜虹殑鏂囩珷
+2003
+鎵€閫夊垎绫讳笉瀛樺湪
+2004
+鏂囩珷鏍囬涓嶈兘涓虹┖
+鏂囩珷鏍囬涓嶈兘涓虹┖
+2005
+鏂囩珷鍐呭涓嶈兘涓虹┖
+鏂囩珷鍐呭涓嶈兘涓虹┖
+4 妯″潡涓夛細鍗氬鍓嶅彴灞曠ず妯″潡锛堢敤鎴峰叆鍙ｆā鍧楋級
+4.1 妯″潡姒傝堪
+妯″潡缂栧彿锛歁OD-03
+鏍稿績鑱岃矗锛氶潰鍚戞墍鏈夌敤鎴锋彁渚涘唴瀹规祻瑙堜笌瀵艰埅鑳藉姏锛屾槸绯荤粺涓昏浜や簰鐣岄潰
+璁捐鐩爣锛氬揩閫熷姞杞姐€佽壇濂戒綋楠屻€佸绔€傞厤
+渚濊禆妯″潡锛氬崥鏂囨牳蹇冪鐞嗘ā鍧椼€佺敤鎴蜂簰鍔ㄧぞ浜ゆā鍧椼€佸叏灞€鍏叡鏀拺妯″潡
+琚緷璧栨ā鍧楋細鏃狅紙绾睍绀烘ā鍧楋級
+4.2 鍔熻兘璇︾粏璁捐
+鍔熻兘鎻忚堪
+鍓嶇疆鏉′欢
+鍚庣疆鏉′欢
+棣栭〉灞曠ず
+鏈€鏂版枃绔犮€佺儹闂ㄦ帓琛屻€佷晶杈规爮瀵艰埅
+P1
+娓叉煋棣栭〉
+鏂囩珷璇︽儏
+P1
+鏂囩珷鍏紑
+P1
+鍒嗙被鏂囩珷鍒楄〃
+P1
+鏍囩鏂囩珷鍒楄〃
+鏃堕棿褰掓。
+P1
+褰掓。鍒楄〃
+鍏ㄦ枃鎼滅储
+P2
+鎼滅储缁撴灉
+鍝嶅簲寮忓竷灞€
+閫傞厤 PC/骞虫澘/鎵嬫満
+P1
+鑷姩閫傞厤
+鍥剧墖銆佽瘎璁烘噿鍔犺浇
+P1
+鎻愬崌鍔犺浇閫熷害
+4.3 鎺ュ彛璁捐
+鎺ュ彛璺緞
+璇锋眰鏂规硶
+鎺ュ彛鍚嶇О
+杈撳叆鍙傛暟
+杈撳嚭
+鏉冮檺
+/api/article/list
+GET
+鑾峰彇鏂囩珷鍒楄〃
+pageNum,pageSize,categoryId,tagId,year,month
+code,msg,data
+鎵€鏈変汉
+/api/article/hot
+GET
+鐑棬鏂囩珷
+limit
+code,msg,data
+鎵€鏈変汉
+/api/article/search
+GET
+鍏ㄦ枃鎼滅储
+keyword,pageNum,pageSize
+code,msg,data
+鎵€鏈変汉
+/api/category/list
+GET
+鍒嗙被鍒楄〃
+code,msg,data
+鎵€鏈変汉
+/api/tag/list
+GET
+鏍囩鍒楄〃
+code,msg,data
+鎵€鏈変汉
+/api/archive/list
+GET
+褰掓。鍒楄〃
+code,msg,data
+鎵€鏈変汉
+4.4 鎬ц兘璁捐
+棣栭〉銆佺儹闂ㄣ€佸垎绫?鏍囩鍒楄〃缂撳瓨 5 鍒嗛挓
+浠ｇ爜楂樹寒鍓嶇瀹炵幇
+4.5 杈圭晫绾︽潫
+娓稿鍙闂紝鏃犻渶鐧诲綍
+5 妯″潡鍥涳細鐢ㄦ埛浜掑姩绀句氦妯″潡锛堜笟鍔℃墿灞曟ā鍧楋級
+5.1 妯″潡姒傝堪
+妯″潡缂栧彿锛歁OD-04
+璁捐鐩爣锛氭祦鐣呬簰鍔ㄣ€佸疄鏃堕€氱煡
+渚濊禆妯″潡锛氱敤鎴疯璇佷笌鏉冮檺妯″潡銆佸崥鏂囨牳蹇冪鐞嗘ā鍧椼€佸叏灞€鍏叡鏀拺妯″潡
+5.2 鍔熻兘璇︾粏璁捐
+鍔熻兘鎻忚堪
+鍓嶇疆鏉′欢
+鍚庣疆鏉′欢
+璇勮鍙戝竷
+鏀寔 Markdown銆佽〃鎯呫€丂鐢ㄦ埛
+P1
+鐢熸垚璇勮锛屽彂閫氱煡
+璇勮鍥炲
+P1
+鐢熸垚鍥炲锛屽彂閫氱煡
+璇勮鍒犻櫎
+P1
+瀵瑰簲鏉冮檺
+鏂囩珷鐐硅禐
+鐐硅禐/鍙栨秷锛岄槻閲嶅
+P1
+鏂囩珷鏀惰棌
+鏀惰棌/鍙栨秷
+P2
+鐢熸垚/鍒犻櫎璁板綍
+鐢ㄦ埛鍏虫敞
+鍏虫敞/鍙栧叧
+P1
+鐢熸垚/鍒犻櫎璁板綍
+娑堟伅閫氱煡
+璇勮銆佺偣璧炪€佸叧娉ㄣ€丂鎻愰啋
+P1
+5.3 鎺ュ彛璁捐
+鎺ュ彛璺緞
+璇锋眰鏂规硶
+鎺ュ彛鍚嶇О
+杈撳叆鍙傛暟
+杈撳嚭
+鏉冮檺
+/api/comment
+POST
+鍙戝竷璇勮
+articleId,content,parentId
+code,msg,data
+浼氬憳
+/api/comment/{id}
+DELETE
+鍒犻櫎璇勮
+id
+code,msg
+/api/comment/list
+GET
+璇勮鍒楄〃
+articleId,pageNum,pageSize
+code,msg,data
+鎵€鏈変汉
+/api/like/{articleId}
+POST
+鐐硅禐鏂囩珷
+articleId
+code,msg
+浼氬憳
+/api/follow/{userId}
+POST
+鍏虫敞鐢ㄦ埛
+userId
+code,msg
+浼氬憳
+/api/notification/list
+GET
+閫氱煡鍒楄〃
+pageNum,pageSize
+code,msg,data
+浼氬憳
+/api/notification/read
+PUT
+鏍囪宸茶
+notificationId
+code,msg
+浼氬憳
+5.4 鏁版嵁璁捐
+blog_notification锛堥€氱煡琛級
+绫诲瀷
+闀垮害
+涓婚敭
+闈炵┖
+娉ㄩ噴
+id
+bigint
+20
+鑷
+璇勮 ID
+content
+varchar
+1000
+璇勮鍐呭
+article_id
+bigint
+20
+鏂囩珷 ID
+user_id
+bigint
+20
+璇勮鑰?ID
+parent_id
+bigint
+20
+0
+鐖惰瘎璁?ID
+is_delete
+tinyint
+1
+0
+create_time
+datetime
+CURRENT_TIMESTAMP
+鍒涘缓鏃堕棿
+5.5 寮傚父澶勭悊
+璇存槑
+鎻愮ず淇℃伅
+3001
+璇勮鍐呭涓嶈兘涓虹┖
+璇勮鍐呭涓嶈兘涓虹┖
+3002
+3003
+鏃犳潈鍒犻櫎璇勮
+鏃犳潈鍒犻櫎浠栦汉璇勮
+3004
+涓嶈兘鍏虫敞鑷繁
+涓嶈兘鍏虫敞鑷繁
+3005
+宸插叧娉ㄨ鐢ㄦ埛
+宸插叧娉ㄨ鐢ㄦ埛
+6.1 妯″潡姒傝堪
+妯″潡缂栧彿锛歁OD-05
+鏍稿績鑱岃矗锛氬睍绀虹敤鎴蜂釜浜轰俊鎭笌鍒涗綔鎴愭灉锛屾彁渚涜祫鏂欑紪杈戜笌涓€у寲閰嶇疆
+琚緷璧栨ā鍧楋細鍗氬鍓嶅彴灞曠ず妯″潡
+6.2 鍔熻兘璇︾粏璁捐
+鍔熻兘鎻忚堪
+鍓嶇疆鏉′欢
+鍚庣疆鏉′欢
+涓汉璧勬枡鏌ョ湅
+P1
+灞曠ず淇℃伅
+璧勬枡缂栬緫
+P1
+鏇存柊淇℃伅
+瀵嗙爜淇敼
+P1
+鏇存柊瀵嗙爜
+涓汉鏂囩珷灞曠ず
+P1
+灞曠ず鏂囩珷
+浜掑姩鏁版嵁灞曠ず
+P1
+灞曠ず缁熻
+鎴戠殑鏀惰棌
+灞曠ず鏀惰棌鏂囩珷
+P2
+灞曠ず鏀惰棌
+涓€у寲閰嶇疆
+P2
+淇濆瓨閰嶇疆
+6.3 鎺ュ彛璁捐
+鎺ュ彛璺緞
+璇锋眰鏂规硶
+鎺ュ彛鍚嶇О
+杈撳叆鍙傛暟
+杈撳嚭
+鏉冮檺
+/api/user/info
+GET
+鑾峰彇褰撳墠鐢ㄦ埛淇℃伅
+token
+code,msg,data
+/api/user/{id}
+GET
+鑾峰彇浠栦汉鍏紑淇℃伅
+userId
+code,msg,data
+鎵€鏈変汉
+/api/user/update
+PUT
+淇敼璧勬枡
+nickname,signature
+code,msg
+/api/user/avatar
+POST
+涓婁紶澶村儚
+file
+code,msg,data
+/api/user/update-pwd
+PUT
+淇敼瀵嗙爜
+oldPwd,newPwd
+code,msg
+/api/user/article
+GET
+鎴戠殑鏂囩珷
+pageNum,pageSize
+code,msg,data
+/api/user/fans
+GET
+绮変笣鍒楄〃
+pageNum,pageSize
+code,msg,data
+/api/user/follow
+GET
+鍏虫敞鍒楄〃
+pageNum,pageSize
+code,msg,data
+6.4 鏁版嵁璁捐
+sys_user銆乥log_article銆乥log_follow銆乥log_like銆乥log_collection
+6.4.2 鏍稿績缁撴瀯
+浠呮湰浜哄彲缂栬緫璧勬枡
+浠栦汉浠呮煡鐪嬪叕寮€淇℃伅
+鏁忔劅鎿嶄綔璁板綍鏃ュ織
+6.6 寮傚父澶勭悊
+璇存槑
+鎻愮ず淇℃伅
+5001
+璇ョ敤鎴蜂笉瀛樺湪
+5002
+鍙兘淇敼鑷繁璧勬枡
+5003
+鍘熷瘑鐮佽緭鍏ヤ笉姝ｇ‘
+7 妯″潡鍏細绯荤粺绠＄悊鍚庡彴妯″潡锛堣繍缁寸鎺фā鍧楋級
+7.1 妯″潡姒傝堪
+妯″潡缂栧彿锛歁OD-06
+渚濊禆妯″潡锛氱敤鎴疯璇佷笌鏉冮檺妯″潡銆佸叏灞€鍏叡鏀拺妯″潡
+7.2 鍔熻兘璇︾粏璁捐
+鍔熻兘鎻忚堪
+鍓嶇疆鏉′欢
+鍚庣疆鏉′欢
+鐢ㄦ埛绠＄悊
+P1
+鏂囩珷绠＄悊
+P1
+鏇存柊鏂囩珷
+璇勮绠＄悊
+P1
+鍒犻櫎璇勮
+鏁版嵁缁熻
+鐢ㄦ埛/鏂囩珷/璇勮/璁块棶缁熻
+P2
+灞曠ず缁熻
+鍦ㄧ嚎鐩戞帶
+P2
+灞曠ず鍦ㄧ嚎
+绯荤粺鏃ュ織
+鎿嶄綔/寮傚父/鐧诲綍鏃ュ織
+P1
+灞曠ず鏃ュ織
+绯荤粺閰嶇疆
+P2
+鏇存柊閰嶇疆
+7.3 鎺ュ彛璁捐
+鎺ュ彛璺緞
+璇锋眰鏂规硶
+鎺ュ彛鍚嶇О
+杈撳叆鍙傛暟
+杈撳嚭
+鏉冮檺
+/api/admin/user/list
+GET
+鐢ㄦ埛鍒楄〃
+pageNum,pageSize
+code,msg,data
+/api/admin/user/status
+PUT
+userId,status
+code,msg
+/api/admin/article/list
+GET
+鏂囩珷鍒楄〃
+pageNum,pageSize
+code,msg,data
+/api/admin/article/del
+DELETE
+鍒犻櫎鏂囩珷
+articleId
+code,msg
+/api/admin/comment/list
+GET
+璇勮鍒楄〃
+pageNum,pageSize
+code,msg,data
+/api/admin/log/list
+GET
+鏃ュ織鍒楄〃
+pageNum,pageSize
+code,msg,data
+/api/admin/cache/clear
+POST
+娓呯悊缂撳瓨
+code,msg
+7.4 鏁版嵁璁捐
+鍏抽敭鎿嶄綔浜屾楠岃瘉
+闃茶秺鏉冦€侀槻鎵归噺鍒犻櫎
+7.6 寮傚父澶勭悊
+璇存槑
+鎻愮ず淇℃伅
+6001
+鏃犵鐞嗗憳鏉冮檺
+6002
+鎿嶄綔闈炴硶
+绠＄悊鍛樻搷浣滀笉鍚堟硶
+6003
+浜屾楠岃瘉澶辫触
+8.1 妯″潡姒傝堪
+妯″潡缂栧彿锛歁OD-07
+鏍稿績鑱岃矗锛氬叏绯荤粺閫氱敤鎶€鏈敮鎾戯紝鏃犱笟鍔￠€昏緫
+渚濊禆妯″潡锛氭棤
+8.2 鍔熻兘璇︾粏璁捐
+鍔熻兘鎻忚堪
+浣滅敤
+缁熶竴鍝嶅簲灏佽
+鏍囧噯 JSON 杩斿洖
+P1
+鍓嶇缁熶竴瑙ｆ瀽
+鍏ㄥ眬寮傚父澶勭悊
+P1
+鍙傛暟鏍￠獙
+JSR-380 鏍￠獙
+P1
+XSS 杩囨护
+杩囨护闈炴硶鑴氭湰
+P1
+P1
+Redis 缂撳瓨宸ュ叿
+P1
+鎻愬崌鎬ц兘
+鏂囦欢涓婁紶
+P1
+缁熶竴绠＄悊
+鏃ュ織宸ュ叿
+P1
+渚夸簬鎺掓煡
+8.3 鎺ュ彛璁捐
+8.4 缁勪欢璁捐
+鍏ㄥ眬寮傚父澶勭悊鍣?GlobalExceptionHandler
+缁熶竴杩斿洖缁撴灉绫?Result
+鑷畾涔変笟鍔″紓甯?BusinessException
+Redis 宸ュ叿绫?RedisUtil
+鏂囦欢涓婁紶宸ュ叿绫?FileUtil
+XSS 杩囨护鍣?XssFilter
+8.5 閰嶇疆璇存槑
+鏃ュ織锛歭ogback.xml
+璺ㄥ煙锛欳orsConfig
+鎷︽埅鍣細LoginInterceptor
+Redis锛歊edisConfig
+8.6 寮傚父澶勭悊
+9 闄勫綍
+9.1 鏈涓庣缉鐣ヨ瘝
+鏈
+璇存槑
+JWT
+韬唤璁よ瘉浠ょ墝
+RBAC
+RESTful
+鎺ュ彛璁捐椋庢牸
+BCrypt
+瀵嗙爜鍔犲瘑绠楁硶
+Redis
+MySQL
+鍏崇郴鍨嬫暟鎹簱
+Docker
+9.2 妯″潡渚濊禆鍏崇郴
+鎵€鏈夋ā鍧椾緷璧?MOD-07 鍏ㄥ眬鍏叡鏀拺妯″潡
+鍓嶅彴銆佷簰鍔ㄣ€佷釜浜虹┖闂翠緷璧?MOD-02 鍗氭枃妯″潡
+9.4 鏂囨。鍙樻洿璁板綍
+鐗堟湰
+鏃ユ湡
+鍙樻洿鍐呭
+V1.0
+2026-05-21
+寮犺寳鐑ㄣ€佹潕娉芥棴
+瀹屾垚鍏ㄩ儴妯″潡璁捐锛屾牸寮忕粺涓€

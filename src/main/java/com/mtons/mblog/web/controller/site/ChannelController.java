@@ -15,6 +15,8 @@ import com.mtons.mblog.modules.data.PostVO;
 import com.mtons.mblog.modules.entity.Channel;
 import com.mtons.mblog.modules.entity.PostAttribute;
 import com.mtons.mblog.modules.service.ChannelService;
+import com.mtons.mblog.modules.service.FavoriteService;
+import com.mtons.mblog.modules.service.PostLikeService;
 import com.mtons.mblog.modules.service.PostService;
 import com.mtons.mblog.web.controller.BaseController;
 import org.springframework.beans.BeanUtils;
@@ -39,6 +41,10 @@ public class ChannelController extends BaseController {
 	private ChannelService channelService;
 	@Autowired
 	private PostService postService;
+	@Autowired
+	private PostLikeService postLikeService;
+	@Autowired
+	private FavoriteService favoriteService;
 	
 	@RequestMapping("/channel/{id}")
 	public String channel(@PathVariable Integer id, ModelMap model,
@@ -69,6 +75,14 @@ public class ChannelController extends BaseController {
 		}
 		postService.identityViews(id);
 		model.put("view", view);
+		if (isAuthenticated()) {
+			long userId = getProfile().getId();
+			model.put("liked", postLikeService.isLiked(userId, id));
+			model.put("favored", favoriteService.isFavorited(userId, id));
+		} else {
+			model.put("liked", false);
+			model.put("favored", false);
+		}
 		return view(Views.POST_VIEW);
 	}
 }

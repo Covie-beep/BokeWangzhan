@@ -23,6 +23,7 @@
 		<qiniu.sdk.version>7.2.18</qiniu.sdk.version>
 		<flyway.version>6.4.0</flyway.version>
 		<commonmark.version>0.12.1</commonmark.version>
+		<lombok.version>1.18.34</lombok.version>
 	</properties>
 
 	<parent>
@@ -41,7 +42,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.4</version>
+			<version>${lombok.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -67,11 +68,6 @@
 			<groupId>io.github.biezhi</groupId>
 			<artifactId>oh-my-email</artifactId>
 			<version>0.0.4</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
 		</dependency>
 
         <dependency>
