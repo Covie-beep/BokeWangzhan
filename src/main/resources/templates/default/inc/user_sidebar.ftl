@@ -12,10 +12,19 @@
         <div class="user-datas">
             <ul>
                 <li><strong>${user.posts}</strong><span>发布</span></li>
+                <li><strong>${followers!0}</strong><span>粉丝</span></li>
+                <li><strong>${followings!0}</strong><span>关注</span></li>
                 <li class="noborder"><strong>${user.comments}</strong><span>评论</span></li>
             </ul>
         </div>
     </li>
+    <#if !owner!false>
+        <li class="list-group-item text-center">
+            <a class="btn btn-default btn-sm" href="#" data-id="${user.id}" rel="follow" role="button">
+                <#if following!false>已关注<#else>关注</#if>
+            </a>
+        </li>
+    </#if>
     <#if owner>
         <li class="list-group-item">
             <a class="btn btn-primary btn-block btn-sm" href="${base}/settings/profile">

@@ -1514,6 +1514,10 @@ $.validator.addMethod("check_username",function(value, element, params){
 	return this.optional(element)||(checkUsername.test(value));
 }, "只能是字母/字母+数字的组合,不少于5位");
 
+$.validator.addMethod("check_password", function(value, element) {
+	return this.optional(element) || value.length > 6;
+}, "密码长度必须大于6位");
+
 $.validator.addMethod("check_editor",function(value, element, params){
 	return this.optional(element)||(value.trim().length > 0);
 }, "内容不能为空");

@@ -53,11 +53,13 @@ define(function(require, exports, module) {
                         required: true
                     },
                     password: {
-                        required: true
+                        required: true,
+                        check_password: true
                     },
                     password2: {
                         required: true,
-                        equalTo: "#password"
+                        equalTo: "#password",
+                        check_password: true
                     }
                 },
                 messages: {
@@ -73,11 +75,13 @@ define(function(require, exports, module) {
                         required: '请输入收到的验证码'
                     },
                     password: {
-                        required: '请输入密码'
+                        required: '请输入密码',
+                        check_password: '密码长度必须大于6位'
                     },
                     password2: {
                         required: '请输入确认密码',
-                        equalTo: '两次输入的密码不一致'
+                        equalTo: '两次输入的密码不一致',
+                        check_password: '密码长度必须大于6位'
                     }
                 }
             });
@@ -135,11 +139,15 @@ define(function(require, exports, module) {
                         required: true,
                         email: true
                     },
-                    password: 'required',
+                    password: {
+                        required: true,
+                        check_password: true
+                    },
                     code: 'required',
                     password2: {
                         required: true,
-                        equalTo: "#password"
+                        equalTo: "#password",
+                        check_password: true
                     }
                 },
                 messages: {
@@ -147,11 +155,15 @@ define(function(require, exports, module) {
                         required: '请输入邮箱地址',
                         email: '邮箱格式不正确'
                     },
-                    password: '请输入新密码',
+                    password: {
+                        required: '请输入新密码',
+                        check_password: '密码长度必须大于6位'
+                    },
                     code: '请输入收到的验证码',
                     password2: {
                         required: '请输入确认密码',
-                        equalTo: '两次输入的密码不一致'
+                        equalTo: '两次输入的密码不一致',
+                        check_password: '密码长度必须大于6位'
                     }
                 }
             });
@@ -197,18 +209,26 @@ define(function(require, exports, module) {
             _bind_validate(formId, {
                 rules: {
                     oldPassword: 'required',
-                    password: 'required',
+                    password: {
+                        required: true,
+                        check_password: true
+                    },
                     password2: {
                         required: true,
-                        equalTo: "#password"
+                        equalTo: "#password",
+                        check_password: true
                     }
                 },
                 messages: {
                     oldPassword: '请输入当前密码',
-                    password: '请输入新密码',
+                    password: {
+                        required: '请输入新密码',
+                        check_password: '密码长度必须大于6位'
+                    },
                     password2: {
                         required: '请输入确认密码',
-                        equalTo: '两次输入的密码不一致'
+                        equalTo: '两次输入的密码不一致',
+                        check_password: '密码长度必须大于6位'
                     }
                 }
             });

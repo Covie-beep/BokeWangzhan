@@ -12,6 +12,7 @@ package com.mtons.mblog.modules.service.impl;
 import com.mtons.mblog.base.lang.EntityStatus;
 import com.mtons.mblog.base.lang.MtonsException;
 import com.mtons.mblog.base.utils.MD5;
+import com.mtons.mblog.base.utils.PasswordValidator;
 import com.mtons.mblog.modules.data.AccountProfile;
 import com.mtons.mblog.modules.data.BadgesCount;
 import com.mtons.mblog.modules.data.UserVO;
@@ -127,6 +128,7 @@ public class UserServiceImpl implements UserService {
 
         Assert.hasLength(user.getUsername(), "用户名不能为空!");
         Assert.hasLength(user.getPassword(), "密码不能为空!");
+        PasswordValidator.validate(user.getPassword());
 
         User check = userRepository.findByUsername(user.getUsername());
 
@@ -218,6 +220,7 @@ public class UserServiceImpl implements UserService {
         User po = userRepository.findById(id).get();
 
         Assert.hasLength(newPassword, "密码不能为空!");
+        PasswordValidator.validate(newPassword);
 
         po.setPassword(MD5.md5(newPassword));
         userRepository.save(po);
@@ -229,6 +232,7 @@ public class UserServiceImpl implements UserService {
         User po = userRepository.findById(id).get();
 
         Assert.hasLength(newPassword, "密码不能为空!");
+        PasswordValidator.validate(newPassword);
 
         Assert.isTrue(MD5.md5(oldPassword).equals(po.getPassword()), "当前密码不正确");
         po.setPassword(MD5.md5(newPassword));

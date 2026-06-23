@@ -99,6 +99,8 @@ public interface Consts {
 
 	int MESSAGE_EVENT_COMMENT_REPLY = 4; // 有人回复了你
 
+	int MESSAGE_EVENT_FOLLOW_USER = 5; // 有人关注了你
+
 	String CACHE_USER = "userCaches";
 	String CACHE_POST = "postCaches";
 

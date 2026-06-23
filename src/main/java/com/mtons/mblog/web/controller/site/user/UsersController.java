@@ -12,6 +12,7 @@ package com.mtons.mblog.web.controller.site.user;
 import com.mtons.mblog.base.lang.MtonsException;
 import com.mtons.mblog.modules.data.AccountProfile;
 import com.mtons.mblog.modules.service.MessageService;
+import com.mtons.mblog.modules.service.UserFollowService;
 import com.mtons.mblog.modules.service.UserService;
 import com.mtons.mblog.web.controller.BaseController;
 import com.mtons.mblog.web.controller.site.Views;
@@ -38,6 +39,8 @@ public class UsersController extends BaseController {
     private UserService userService;
     @Autowired
     private MessageService messageService;
+    @Autowired
+    private UserFollowService userFollowService;
 
     /**
      * 用户文章
@@ -88,6 +91,13 @@ public class UsersController extends BaseController {
             putProfile(userService.findProfile(profile.getId()));
         }
         model.put("owner", owner);
+        model.put("followers", userFollowService.countFollowers(userId));
+        model.put("followings", userFollowService.countFollowing(userId));
+        if (!owner && profile != null) {
+            model.put("following", userFollowService.isFollowing(profile.getId(), userId));
+        } else {
+            model.put("following", false);
+        }
     }
 
 }

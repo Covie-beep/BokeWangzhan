@@ -109,6 +109,33 @@ define(function(require, exports, module) {
 			return false;
 		});
 
+		// Follow
+		$(document).on('click', 'a[rel=follow]', function (e) {
+			e.preventDefault();
+			var $btn = $(this);
+			var userId = $btn.attr('data-id');
+
+			if (!Authc.isAuthced()) {
+				Authc.showLogin();
+				return false;
+			}
+
+			if (parseInt(userId) > 0) {
+				var following = $btn.text().indexOf('已关注') >= 0;
+				var url = following ? '/user/unfollow' : '/user/follow';
+				jQuery.getJSON(_MTONS.BASE_PATH + url, {'userId': userId}, function (ret) {
+					if (ret.code >= 0 && ret.data) {
+						$btn.text(ret.data.following ? '已关注' : '关注');
+					} else {
+						layer.msg(ret.message || '操作失败', {icon: 5});
+					}
+				}).fail(function () {
+					layer.msg('请求失败，请确认已登录后重试', {icon: 5});
+				});
+			}
+			return false;
+		});
+
 		//$(document).pjax('a[rel=pjax]', '#wrap', {
 		//	fragment: '#wrap',
 		//	timeout: 10000,
