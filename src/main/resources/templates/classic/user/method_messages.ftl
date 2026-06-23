@@ -31,10 +31,14 @@
                                                 <span>
                                                     <#if (row.event == 1)>
                                                         收藏了你的文章 - <a href="${base}/post/${row.postId}">${row.post.title}</a>
+                                                    <#elseif (row.event == 2)>
+                                                        点赞了你的文章 - <a href="${base}/post/${row.postId}">${row.post.title}</a>
                                                     <#elseif (row.event == 3)>
                                                         评论了你的文章 - <a href="${base}/post/${row.postId}">点击查看详情</a>
                                                     <#elseif (row.event == 4)>
                                                         回复了你的评论 - <a href="${base}/post/${row.postId}">点击查看详情</a>
+                                                    <#elseif (row.event == 5)>
+                                                        关注了你
                                                     </#if>
                                                 </span>
                                             </div>
